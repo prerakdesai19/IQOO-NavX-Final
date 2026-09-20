@@ -1147,17 +1147,10 @@ export const App: React.FC = () => {
           {/* BOTTOM NAVIGATION */}
 
           <BottomNavBar
-            activeTab={
-              activeTab
-            }
-            onChange={
-              handleSelectTab
-            }
-            isNavigating={
-              isNavigating
-            }
-          />
-
+  activeTab={activeTab}
+  onChangeTab={handleSelectTab}
+  isNavigating={isNavigating}
+/>
           {/* TOAST */}
 
           {toastMessage && (
