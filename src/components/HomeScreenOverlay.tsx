@@ -77,7 +77,7 @@ export const HomeScreenOverlay: React.FC<HomeScreenOverlayProps> = ({
         return <Fuel size={17} />;
 
       case 'hospital':
-        return <Cross size={17} />;
+  return <Crosshair size={17} />;
 
       case 'work':
       case 'tech_park':
