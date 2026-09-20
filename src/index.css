@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+:root {
+  /* Surface & Background */
+  --bg-primary: #08090A;
+  --bg-surface: #111315;
+  --bg-surface-secondary: #191C1F;
+  --bg-surface-elevated: #22262A;
+  --border-color: #2B2F33;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* Brand & Status Accents */
+  --accent-iqoo: #FFD400; /* iQOO Yellow */
+  --accent-iqoo-glow: rgba(255, 212, 0, 0.25);
+  --color-gps: #3B82F6;   /* Blue for GPS / Technology */
+  --color-success: #22C55E; /* Green for Success */
+  --color-warning: #F59E0B; /* Amber for Warning */
+  --color-error: #EF4444;   /* Red for Error */
+
+  /* Text System */
+  --text-primary: #F5F7F8;
+  --text-secondary: #A4A9AE;
+  --text-muted: #6F757B;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Radius System (Section 10) */
+  --radius-sm: 8px;     /* Small controls */
+  --radius-card: 14px;  /* Cards (12-16px) */
+  --radius-panel: 18px; /* Large panels (16-20px) */
+  --radius-search: 16px;/* Search bar (14-16px) */
+  --radius-full: 9999px;/* Pills */
+
+  /* Depth & Shadows (Section 11) */
+  --shadow-subtle: 0 4px 16px -2px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.04);
+  --shadow-hud: 0 12px 32px -4px rgba(0, 0, 0, 0.75), 0 0 1px 1px rgba(255, 255, 255, 0.06);
+  --shadow-glow-yellow: 0 0 20px rgba(255, 212, 0, 0.3);
+}
+
+/* Ultra Navigation Mode Variables (OLED Pitch Black & Minimal Power Consumption) */
+body.ultra-mode {
+  --bg-primary: #000000;
+  --bg-surface: #000000;
+  --bg-surface-secondary: #050505;
+  --bg-surface-elevated: #0C0C0C;
+  --border-color: #1A1A1A;
+  --shadow-hud: none;
+  --shadow-subtle: none;
+  --shadow-glow-yellow: none;
+}
+
+body.ultra-mode * {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent-iqoo);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: #2B2F33;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-iqoo);
+}
+
+/* Surface Utility Classes */
+.surface-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-subtle);
+}
+
+.surface-elevated {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+}
+
+.surface-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-hud);
+}
+
+/* Status Badges */
+.badge-gps {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60A5FA;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-offline {
+  background: rgba(245, 158, 11, 0.12);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ADE80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-iqoo {
+  background: rgba(255, 212, 0, 0.12);
+  color: #FFD400;
+  border: 1px solid rgba(255, 212, 0, 0.3);
+}
+
+.badge-error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Button Foundation Utilities */
+.btn-primary {
+  background-color: var(--accent-iqoo);
+  color: #000000;
+  font-family: var(--font-display);
+  font-weight: 800;
+  border-radius: var(--radius-card);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(255, 212, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #ffe033;
+  box-shadow: 0 0 24px rgba(255, 212, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #2a3036;
+  border-color: #3f454c;
+  color: #FFFFFF;
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-card);
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  background-color: #2a3036;
+  color: var(--text-primary);
+  border-color: #3f454c;
+}
+
+.btn-icon:active {
+  transform: scale(0.95);
+}
+
+/* Leaflet map custom styling for iQOO Dark Aesthetic */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #08090A !important;
+  font-family: var(--font-sans);
+}
+
+.leaflet-tile {
+  filter: brightness(0.68) invert(1) contrast(3) hue-rotate(200deg) saturate(0.28) brightness(0.62) !important;
+}
+
+.leaflet-control-zoom, .leaflet-control-attribution {
+  display: none !important;
+}
+
+/* Vehicle Pulse Ring */
+.vehicle-marker-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vehicle-pulse-ring {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 212, 0, 0.2);
+  border: 1.5px solid var(--accent-iqoo);
+  animation: pulseRing 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.5); opacity: 0.95; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Destination Pulse */
+.destination-pulse-ring {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1.5px solid #EF4444;
+  animation: pulseRing 2.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Voice Wave Animation */
+@keyframes voiceWave {
+  0%, 100% { height: 6px; }
+  50% { height: 28px; }
+}
+
+.voice-wave-bar {
+  width: 3.5px;
+  background-color: var(--accent-iqoo);
+  border-radius: 9999px;
+  animation: voiceWave 1s infinite ease-in-out;
+}
